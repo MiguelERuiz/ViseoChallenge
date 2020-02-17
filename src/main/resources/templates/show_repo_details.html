@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Repo Details</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous"/>
+  <script src="https://kit.fontawesome.com/38fe589003.js" crossorigin="anonymous"></script>
+  <style>
+    .avatar {
+      vertical-align: middle;
+      width: 25%;
+      height: 75%;
+      border-radius: 50%;
+    }
+
+    .col-lg-4 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .justify-content-center {
+      justify-content: center;
+      display: flex;
+    }
+    .h5, h5 {
+      font-size: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Github Dashboard Sample</h1>
+  <h2>Repo Details</h2>
+  <div class="row justify-content-center">
+    <div class="col-lg-4">
+      <img th:src="${repoDetails.owner.avatar_url}" class="avatar"/>
+      <h5 th:text="${repoDetails.owner.login}"></h5>
+    </div>
+  </div>
+  <div class="container">
+    <div class="jumbotron">
+      <div>
+        Name: <a th:text="${repoDetails.name}"></a>
+      </div>
+      <br/>
+      <div>
+        Main language: <a th:text="${repoDetails.language}"></a>
+      </div>
+      <br/>
+      <div>
+        Number of <i class="fas fa-star">:&nbsp;</i><a th:text="${repoDetails.stargazers_count}"></a>
+      </div>
+      <br/>
+      <div>
+        Description: <a th:text="${repoDetails.description}"></a>
+      </div>
+      <br/>
+      <div>
+        Created at: <a th:text="${repoDetails.created_at}"></a>
+      </div>
+      <br/>
+      <div>
+        Updated at: <a th:text="${repoDetails.updated_at}"></a>
+      </div>
+      <br/>
+      <a class="btn btn-primary btn-lg" th:href="${repoDetails.html_url}" role="button">Visit repo</a>
+    </div>
+  </div>
+</body>
+</html>

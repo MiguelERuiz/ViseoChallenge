@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>User Details</title>
+  <link rel="stylesheet" href="../static/css/search_user.css" th:href="@{css/search_user.css}"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous"/>
+  <script src="https://kit.fontawesome.com/38fe589003.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>Github Dashboard Sample</h1>
+<h2>User Details</h2>
+  <div class="row justify-content-center">
+    <div class="col-lg-4">
+      <img th:src="${user.avatar_url}" class="avatar"/>
+      <h5 th:text="${user.login}">Github User</h5>
+    </div>
+  </div>
+  <h5>Repositories</h5>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item"><i class="fas fa-male text-info mx-2"></i>David Copperfield</li>
+        <li class="list-group-item"><i class="fas fa-venus text-warning mx-2"></i>The Portrait of a Lady</li>
+        <li class="list-group-item"><i class="fas fa-gavel text-danger mx-2"></i> The Trial</li>
+      </ul>
+    </div>
+  </div>
+</div>
+  <div th:each="repo : ${listRepo}" class="list-group list-group-flush w-100 align-items-stretch">
+    <div>
+      <i class="fas fa-star">:&nbsp;</i><a class="list-group-item text-center d-inline-bloc" th:text="${repo.name}" th:href="@{/show_repo_details/{user}/{repo}(user=${repo.owner.login}, repo=${repo.name})}"></a>
+    </div>
+  </div>
+</body>
+</html>
